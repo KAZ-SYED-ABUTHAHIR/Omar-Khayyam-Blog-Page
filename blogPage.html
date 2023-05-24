@@ -1,0 +1,163 @@
+<script>
+  const elementsHead = document.querySelectorAll('head > *')
+  elementsHead.forEach(element => element.remove())
+
+  const headElement = document.querySelector('head')
+  headElement.innerHTML = `
+<!-- HTML Injected Into the Head -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>An Ode to the Summer - A Poem by Omar Khayyam</title>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<style>
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  #img-logo {
+    width: 20px;
+    height: auto;
+    margin: 0 0em;
+  }
+
+  nav {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #04512e;
+    padding: 1em;
+  }
+
+  nav a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: white;
+  }
+
+  #a-logo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+
+  #a-logo span {
+    padding-left: 0.3em;
+  }
+
+  #hamburger {
+    appearance: none;
+  }
+
+  label {
+    display: none;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 2em;
+  }
+
+  ul a {
+    padding: 0.8em;
+    padding-bottom: 0.5em;
+  }
+
+  ul a:hover {
+    background-color: #333;
+    border-bottom: none;
+    border-radius: 0.4em;
+  }
+
+  .active {
+    border-bottom: 2px solid #fff;
+  }
+
+  @media screen and (max-width: 600px) {
+    label {
+      display: block;
+    }
+
+    ul {
+      font-size: 1.2em;
+      position: absolute;
+      /* left: -100%; */
+      left: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2em;
+      top: -60px;
+      width: 100%;
+      /* height: calc(100vh - 50px); */
+      height: 0;
+      background: transparent;
+      transition: 0.6s ease-in-out;
+      z-index: -1;
+    }
+
+    input[type='checkbox']:checked ~ ul {
+      /* left: 0; */
+      top: 0;
+      height: calc(100vh + 0px);
+      background-color: #333;
+    }
+
+    ul a:hover {
+      background-color: #0073cf;
+      border-bottom: none;
+    }
+  }
+</style>
+
+                          `
+
+  const elements = document.querySelectorAll('body > *')
+  elements.forEach(element => element.remove())
+
+  const bodyElement = document.querySelector('body')
+
+  bodyElement.innerHTML = `
+  <main id="container">
+  <header></header>
+  <nav id="navigator">
+    <a href="#home" id="a-logo"
+      ><img
+        src="https://drive.google.com/thumbnail?id=1EskKgmv_Y8GjIDt04tQvUDaiEyXDirgb"
+        alt="Poetry Logo"
+        id="img-logo"
+      /><span class="logo-text">Khayyam's Poetry</span></a
+    >
+    <input type="checkbox" name="hamburger" id="hamburger" />
+    <label for="hamburger"><i class="fa-solid fa-bars"></i></label>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#poems">Poems</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+  </nav>
+  <section id="hero"></section>
+  <article class="artice article-1"></article>
+  <aside class="aside aside-1"></aside>
+  <footer></footer>
+</main>      
+  `
+</script>
