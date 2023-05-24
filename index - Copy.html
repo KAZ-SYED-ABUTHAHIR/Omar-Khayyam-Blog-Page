@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<body>
+  
+</body>
+  <script>
+    const headElement = document.querySelector('head')
+    headElement.innerHTML = `
+                  	<title> An Ode to the Summer - A Poem by Omar Khayyam </title>
+                    <style>
+
+                    </style>
+                    		`
+
+    const elements = document.querySelectorAll('body > *')
+    elements.forEach(element => element.remove())
+
+    const bodyElement = document.querySelector('body')
+
+    bodyElement.innerHTML = `
+        
+    `
+  </script>
+</html>
