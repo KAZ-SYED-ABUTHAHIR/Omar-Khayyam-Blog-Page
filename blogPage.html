@@ -4,130 +4,305 @@
 
   const headElement = document.querySelector('head')
   headElement.innerHTML = `
-<!-- HTML Injected Into the Head -->
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>An Ode to the Summer - A Poem by Omar Khayyam</title>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<style>
-  *,
-  *::after,
-  *::before {
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>An Ode to the Summer - A Poem by Omar Khayyam</title>
+      <link rel="stylesheet" href="style.css">
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
+
+
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Esteban&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-
-  body {
-    overflow: hidden;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
+}
 
-  #img-logo {
+:root {
+    --poem-clr: #000;
+    --drop-cap-clr: #000;
+}
+
+@font-face {
+    font-family: Ornate;
+    src: url(AngloText.ttf);
+}
+
+body {
+    display: grid;
+    place-content: center;
+    margin-bottom: 1rem;
+}
+
+#img-logo {
     width: 20px;
     height: auto;
     margin: 0 0em;
-  }
+}
 
-  nav {
+nav {
     font-family: 'Poppins', sans-serif;
     display: flex;
+    position: fixed;
+    top: 0;
     align-items: center;
     justify-content: space-between;
-    background-color: #04512e;
+    background-color: rgb(0, 46, 26);
     padding: 1em;
-  }
+    width: 100%;
+    height: 2.8em;
+    z-index: 9999;
+}
 
-  nav a {
+nav a {
     text-decoration: none;
     text-transform: capitalize;
     color: white;
-  }
+}
 
-  #a-logo {
+#a-logo {
     font-size: 1.2rem;
     font-weight: 600;
     display: flex;
     align-items: center;
-  }
+}
 
-  #a-logo span {
+#a-logo span {
     padding-left: 0.3em;
-  }
+}
 
-  #hamburger {
+#hamburger {
     appearance: none;
-  }
+}
 
-  label {
+#navigator>label>i {
+    color: white;
+}
+
+label {
     display: none;
     cursor: pointer;
-  }
+}
 
-  ul {
+ul {
     list-style: none;
     display: flex;
     gap: 2em;
-  }
+}
 
-  ul a {
+ul a {
     padding: 0.8em;
     padding-bottom: 0.5em;
-  }
+}
 
-  ul a:hover {
+ul a:hover {
     background-color: #333;
     border-bottom: none;
     border-radius: 0.4em;
-  }
+}
 
-  .active {
+.active {
     border-bottom: 2px solid #fff;
-  }
+}
 
-  @media screen and (max-width: 600px) {
+
+
+nav .hamburger {
+    display: none;
+    height: min-content;
+    margin: 0px 0px 0 0;
+    cursor: pointer;
+}
+
+nav .hamburger .bar {
+    display: flex;
+    height: 2px;
+    width: 20px;
+    background: #ffffff;
+    margin-bottom: 3.4px;
+    border-radius: 9999px;
+    transition: .4s;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .hamburger .bar>i {
+    font-size: .65em;
+    font-weight: 900;
+    color: #fff;
+
+}
+
+#container {
+    width: 100vw;
+    margin-top: 2.8em;
+    padding: 2rem;
+    background-image: url(https://cdn.pixabay.com/photo/2015/11/02/18/32/water-1018808_1280.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+article.poem {
+    padding: 2rem;
+    /* background-color: #00000098;
+    backdrop-filter:blur(3px);
+    border-radius: 1rem; */
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+div.stanzas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 5rem;
+}
+
+h2.poem-title {
+    font-family: Esteban, sans-serif;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: .15rem;
+    margin: 1rem .2rem;
+    color: var(--poem-clr);
+}
+
+p.stanza-num {
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--poem-clr);
+}
+
+p.stanza {
+    font-family: 'Lobster', cursive;
+    letter-spacing: .12rem;
+    font-weight: lighter;
+    line-height: 1.5rem;
+    color: var(--poem-clr);
+}
+
+span.drop-cap {
+    float: left;
+    line-height: 72%;
+    width: .7em;
+    font-size: 400%;
+    margin-right: .3rem;
+    font-family: Ornate;
+    color: var(--drop-cap-clr);
+    margin-top: .05ch;
+}
+
+@media screen and (max-width: 1300px) {
+    p.stanza {
+        font-size: .8rem;
+    }
+
+    span.drop-cap {
+        margin-top: .3ch;
+    }
+
+    div.stanzas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 1rem;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
     label {
-      display: block;
+        display: block;
     }
 
     ul {
-      font-size: 1.2em;
-      position: absolute;
-      /* left: -100%; */
-      left: 0;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2em;
-      top: -60px;
-      width: 100%;
-      /* height: calc(100vh - 50px); */
-      height: 0;
-      background: transparent;
-      transition: 0.6s ease-in-out;
-      z-index: -1;
+        font-size: 1.2em;
+        position: absolute;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2em;
+        top: 2.3em;
+        width: 100%;
+        height: 0;
+        background: #22222222;
+        backdrop-filter: blur(5px);
+        transition: 0.5s ease-in-out;
+        overflow: hidden;
     }
 
-    input[type='checkbox']:checked ~ ul {
-      /* left: 0; */
-      top: 0;
-      height: calc(100vh + 0px);
-      background-color: #333;
+    input[type='checkbox']:checked~ul {
+        height: calc(100vh - 2.1em);
+        background-color: #333;
+        /* z-index: 9999; */
     }
+
+    input[type='checkbox']:checked~.hamburger {
+        margin-top: -10px;
+        margin-right: 20px;
+        font-size: .65em;
+    }
+
+    input[type='checkbox']:checked~.hamburger .bar:nth-child(1) {
+        position: absolute;
+        transform: rotate(-45deg);
+    }
+
+    input[type='checkbox']:checked~.hamburger .bar:nth-child(2) {
+        display: none;
+    }
+
+    input[type='checkbox']:checked~.hamburger .bar:nth-child(3) {
+        position: absolute;
+        transform: rotate(45deg);
+
+    }
+
 
     ul a:hover {
-      background-color: #0073cf;
-      border-bottom: none;
+        background-color: #0073cf;
+        border-bottom: none;
     }
-  }
-</style>
 
-                          `
+    nav .hamburger {
+        display: grid !important;
+        justify-content: space-around;
+    }
+
+    div.stanzas {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 1rem;
+    }
+
+    .stanza {
+        padding-left: .7rem;
+    }
+
+}
+                       
+      </style>
+                 `
 
   const elements = document.querySelectorAll('body > *')
   elements.forEach(element => element.remove())
@@ -135,29 +310,173 @@
   const bodyElement = document.querySelector('body')
 
   bodyElement.innerHTML = `
-  <main id="container">
-  <header></header>
   <nav id="navigator">
-    <a href="#home" id="a-logo"
-      ><img
-        src="https://drive.google.com/thumbnail?id=1EskKgmv_Y8GjIDt04tQvUDaiEyXDirgb"
-        alt="Poetry Logo"
-        id="img-logo"
-      /><span class="logo-text">Khayyam's Poetry</span></a
-    >
-    <input type="checkbox" name="hamburger" id="hamburger" />
-    <label for="hamburger"><i class="fa-solid fa-bars"></i></label>
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#poems">Poems</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-    </ul>
-  </nav>
-  <section id="hero"></section>
-  <article class="artice article-1"></article>
-  <aside class="aside aside-1"></aside>
-  <footer></footer>
-</main>      
-  `
+      <a href="#home" id="a-logo"
+        ><img
+          src="https://drive.google.com/thumbnail?id=1EskKgmv_Y8GjIDt04tQvUDaiEyXDirgb"
+          alt="Poetry Logo"
+          id="img-logo"
+        /><span class="logo-text">Khayyam's Poetry</span></a
+      >
+      <input type="checkbox" name="hamburger" id="hamburger" />
+      <label class="hamburger" for="hamburger">
+        <span class="bar"> <i class="fa-regular fa-horizontal-rule"></i></span>
+        <span class="bar"> <i class="fa-regular fa-horizontal-rule"></i></span>
+        <span class="bar"> <i class="fa-regular fa-horizontal-rule"></i></span>
+      </label>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#poems">Poems</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </nav>
+
+    <main id="container">
+      <section id="hero"></section>
+      <article class="artice poem poem-01 poem-ode-to-summer">
+        <h2 class="poem-title poem-title-1">An Ode to the Summer</h2>
+        <div class="stanzas">
+          <div class="stanza-div">
+            <p class="stanza-num">I</p>
+            <p class="stanza stanza-1">
+              <span class="drop-cap">O</span> Summer, where hath thou been all
+              this time?<br />
+              Welcome ye, the giver of goods to all. <br />
+              Food to all Nature in its Godly prime.<br />
+              <br />
+              Dearest of mother Nature gives her call<br />
+              For the effects of your absent hath toilr&rsquo;d<br />
+              Her. And her power took a mighty fall<br />
+              <br />
+              Stay long! For you are nigh everywhere hail&rsquo;d<br />
+              Save for those who can&rsquo;t stand your lofty might<br />
+              And in their eyes thou art a danger veiled<br />
+              <br />
+              Thy effects to Nature give beauty sight<br />
+              In your time should it never ever rain<br />
+              And ruin thee by sending you on a fright<br />
+              <br />
+              What earthly use will the world ever gain,<br />
+              Ah, where thou art not must be full of pain.<br />
+            </p>
+          </div>
+
+          <div class="stanza-div">
+            <p class="stanza-num">II</p>
+            <p class="stanza stanza-2">
+              <span class="drop-cap">N</span>ow shall I deviate and list
+              Summer&rsquo;s fruits<br />
+              That she doth kindly give us underlings<br />
+              She may not feed and nourish Nature&rsquo;s roots<br />
+              <br />
+              Like Water, of whose praise may I not sing<br />
+              For he already hath his praise wide rife<br />
+              Summer doth power to all the trees bring<br />
+              <br />
+              And by that process make food for all life<br />
+              Bring warmth to all, for she is temperate<br />
+              Yet mild in her delicacies of strife<br />
+              <br />
+              Between herself and the people who hate<br />
+              For some reason the pleasantness of her.<br />
+              Don&rsquo;t blame, for God hath decided her fate<br />
+              <br />
+              Human, listen! Act wiser to the fair<br />
+              Summer, for she adds to the world her flair.<br />
+            </p>
+          </div>
+
+          <div class="stanza-div">
+            <p class="stanza-num">III</p>
+            <p class="stanza stanza-3">
+              <span class="drop-cap">O</span> Summer, thou truly art a poet's
+              muse<br />
+              Those who fail to praise thee do not see thy&#160;<br />
+              Glory large in its full fledged form let loose<br />
+              <br />
+              Show mercy! To those with wings wide stretched fly.<br />
+              Be kind ye! To oceans and seas that frets<br />
+              Into sightless air with a mistress' shy<br />
+              <br />
+              With just a look of thy boldness life sweats<br />
+              Begone, ye wet marsh lands of humid grime<br />
+              With dry lands of lone sand there's no regrets<br />
+              <br />
+              Yet, be kinder to lands of sandy prime<br />
+              Shine! But with far less temperate readings<br />
+              Give them the dearest of your ticking time<br />
+              <br />
+              If God be the one to read these musings<br />
+              Hear! And make Summer adhere my writings<br />
+            </p>
+          </div>
+
+          <div class="stanza-div">
+            <p class="stanza-num">IV</p>
+            <p class="stanza stanza-4">
+              <span class="drop-cap">T</span>he great Aesop did write in full
+              the true<br />
+              Wonders thou art capable of doing<br />
+              And the same I put forth here for thy view<br />
+              <br />
+              The northwind had a fight with sun brewing<br />
+              Who's stronger? The one that strew'd everything<br />
+              Or the hot sun that kept all world glowing<br />
+              <br />
+              Yet a challenge then did the northwind bring<br />
+              Who strips with ease first the traveller's cloak&#160;<br />
+              By all means be crowned as the mighty king<br />
+              <br />
+              So the northwind with all his might provoke<br />
+              But the man pulled his cloak and did not yield<br />
+              Yet mild rays of sun did make him uncloak<br />
+              <br />
+              The cloak that acted against wind as shield<br />
+              To the gentle sun he himself be veiled&#160;<br />
+            </p>
+          </div>
+
+          <div class="stanza-div">
+            <p class="stanza-num">V</p>
+            <p class="stanza stanza-5">
+              <span class="drop-cap">O</span> Summer, thou gifter of perspired
+              pearls!<br />
+              I beg ye mighty for the following<br />
+              Favours, which if be sans the Earth it fails!<br />
+              <br />
+              The two poles of North and South there&rsquo;s flowing<br />
+              Water and the white icecaps abound<br />
+              Everywhere, shine mild to keep it glowing<br />
+              <br />
+              Beam lighter, if the ground is not too drowned<br />
+              For thirsty mouths with thine power gleaming<br />
+              They could but get to any place around<br />
+              <br />
+              What if all this be a pleasure dreaming<br />
+              And if you be gone, I wonder when you<br />
+              Are then absent, and at last your beaming&#160;<br />
+              <br />
+              Stops. I live in hopes, for even the blue,<br />
+              Winter still has a sunny day or two.<br />
+            </p>
+          </div>
+        </div>
+      </article>
+      <aside class="aside aside-1"></aside>
+      <footer></footer>
+    </main>
+
+  
+                `
+
+  const chkHamburger = document.getElementById('hamburger')
+
+  chkHamburger.addEventListener('change', e => {
+    if (e.target.checked) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'scroll'
+    }
+  })
 </script>
